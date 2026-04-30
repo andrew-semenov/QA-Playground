@@ -17,10 +17,12 @@ const translations = {
     filterBackend: "⚙️ Backend",
     filterApi: "🔌 API",
     btnOpen: "Open",
+    comingSoon: "Soon",
     todoPlaceholder: "Add a new task...",
     todoAdd: "Add",
     todoPending: "tasks pending",
-    todoCompleted: "completed"
+    todoCompleted: "completed",
+    calcWarning: "⚠️ This calculator has some interesting bugs..."
   },
   zh: {
     heroTitle: "测试与破坏",
@@ -40,10 +42,12 @@ const translations = {
     filterBackend: "⚙️ 后端",
     filterApi: "🔌 API",
     btnOpen: "打开",
+    comingSoon: "即将推出",
     todoPlaceholder: "添加新任务...",
     todoAdd: "添加",
     todoPending: "待办任务",
-    todoCompleted: "已完成"
+    todoCompleted: "已完成",
+    calcWarning: "⚠️ 这个计算器有一些有趣的 bug..."
   },
   ru: {
     heroTitle: "Тестируй и ломай",
@@ -63,9 +67,11 @@ const translations = {
     filterBackend: "⚙️ Бэкенд",
     filterApi: "🔌 API",
     btnOpen: "Открыть",
+    comingSoon: "Скоро",
     todoPlaceholder: "Добавить новую задачу...",
     todoAdd: "Добавить",
     todoPending: "задач в ожидании",
-    todoCompleted: "выполнено"
+    todoCompleted: "выполнено",
+    calcWarning: "⚠️ У этого калькулятора есть некоторые интересные баги..."
   }
 };

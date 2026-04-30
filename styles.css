@@ -161,6 +161,45 @@ nav a:hover { color: #4ade80; }
 
 .btn:hover { background: #22c55e; }
 
+.btn-disabled {
+  background: #1e3a1e;
+  color: #4a5a4a;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: inline-block;
+  cursor: not-allowed;
+  border: none;
+}
+
+.card.missing {
+  position: relative;
+}
+
+.card.missing::after {
+  content: attr(data-soon);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4ade80;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.card.missing:hover::after {
+  opacity: 1;
+}
+
 footer {
   text-align: center;
   padding: 20px;

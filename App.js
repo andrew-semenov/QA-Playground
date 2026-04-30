@@ -1,75 +1,3 @@
-const translations = {
-  en: {
-    heroTitle: "Test & Break Things",
-    heroDesc: "A collection of projects designed for testing, finding bugs, and having fun.",
-    navProjects: "Projects",
-    navAbout: "About",
-    statTotal: "Total Projects",
-    statBugs: "Bug Projects",
-    statGames: "Games",
-    aboutTitle: "About",
-    aboutDesc: "QA Playground is a collection of intentionally buggy projects, demos, and mini-games for testing purposes. Find bugs, report issues, or just explore how things break!",
-    filterAll: "All",
-    filterBugs: "🐛 Bugs",
-    filterGames: "🎮 Games",
-    filterDemos: "📺 Demos",
-    filterFrontend: "🎨 Frontend",
-    filterBackend: "⚙️ Backend",
-    filterApi: "🔌 API",
-    btnOpen: "Open",
-    todoPlaceholder: "Add a new task...",
-    todoAdd: "Add",
-    todoPending: "tasks pending",
-    todoCompleted: "completed"
-  },
-  zh: {
-    heroTitle: "测试与破坏",
-    heroDesc: "一个专为测试、找bug和娱乐而设计的项目集合。",
-    navProjects: "项目",
-    navAbout: "关于",
-    statTotal: "项目总数",
-    statBugs: "Bug项目",
-    statGames: "游戏",
-    aboutTitle: "关于",
-    aboutDesc: "QA Playground 是一个故意包含bug的项目、演示和小游戏的集合，用于测试目的。找bug、报告问题，或者 simply explore事物是如何出错的！",
-    filterAll: "全部",
-    filterBugs: "🐛 Bug",
-    filterGames: "🎮 游戏",
-    filterDemos: "📺 演示",
-    filterFrontend: "🎨 前端",
-    filterBackend: "⚙️ 后端",
-    filterApi: "🔌 API",
-    btnOpen: "打开",
-    todoPlaceholder: "添加新任务...",
-    todoAdd: "添加",
-    todoPending: "待办任务",
-    todoCompleted: "已完成"
-  },
-  ru: {
-    heroTitle: "Тестируй и ломай",
-    heroDesc: "Коллекция проектов для тестирования, поиска багов и развлечения.",
-    navProjects: "Проекты",
-    navAbout: "О нас",
-    statTotal: "Всего проектов",
-    statBugs: "Баг-проекты",
-    statGames: "Игры",
-    aboutTitle: "О нас",
-    aboutDesc: "QA Playground — это коллекция намеренно багованных проектов, демок и мини-игр для тестирования. Находи баги, сообщай о проблемах или просто исследуй, как всё ломается!",
-    filterAll: "Все",
-    filterBugs: "🐛 Баги",
-    filterGames: "🎮 Игры",
-    filterDemos: "📺 Демо",
-    filterFrontend: "🎨 Фронтенд",
-    filterBackend: "⚙️ Бэкенд",
-    filterApi: "🔌 API",
-    btnOpen: "Открыть",
-    todoPlaceholder: "Добавить новую задачу...",
-    todoAdd: "Добавить",
-    todoPending: "задач в ожидании",
-    todoCompleted: "выполнено"
-  }
-};
-
 const projects = [
   {
     title: "Broken Form",
@@ -133,6 +61,13 @@ const projects = [
     link: "projects/todo-list/index.html",
     type: "frontend",
     tags: ["frontend", "app"]
+  },
+  {
+    title: "Calculator",
+    description: "Calculator with obvious bugs: 0.1+0.2≠0.3, Infinity errors, and weird negative number handling...",
+    link: "projects/calculator/index.html",
+    type: "bug",
+    tags: ["frontend", "math"]
   }
 ];
 
@@ -153,13 +88,22 @@ function renderProjects(filter = 'all') {
     
     const typeLabels = { bug: '🐛 Bug', game: '🎮 Game', demo: '📺 Demo' };
     const tagsHtml = project.tags.map(tag => `<span class="card-tag">${tag}</span>`).join('');
+    const isMissing = project.link === '#';
+    const btnHtml = isMissing 
+      ? `<button class="btn btn-disabled" disabled>${t.btnOpen}</button>`
+      : `<a class="btn" href="${project.link}" target="_blank">${t.btnOpen}</a>`;
+
+    if (isMissing) {
+      card.classList.add('missing');
+      card.dataset.soon = t.comingSoon;
+    }
 
     card.innerHTML = `
       <span class="card-type ${project.type}">${typeLabels[project.type]}</span>
       <div class="card-tags">${tagsHtml}</div>
       <h3>${project.title}</h3>
       <p>${project.description}</p>
-      <a class="btn" href="${project.link}" target="_blank">${t.btnOpen}</a>
+      ${btnHtml}
     `;
 
     grid.appendChild(card);
